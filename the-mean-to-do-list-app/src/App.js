@@ -3,10 +3,17 @@ import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
 
-function ToDo({ todo }) {
+function ToDo({ todo, index, completeToDo, removeToDo }) {
   return (
-    <div className="todo">
+    <div
+      className="todo"
+      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
+    >
       {todo.text}
+      <div className = "actions">
+        <button onClick={() => completeToDo(index)}>✅</button>
+        <button onClick={() => removeToDo(index)}>❌</button>
+      </div>
     </div>
   );
 };
@@ -36,9 +43,18 @@ function App() {
   //todos is the state variable
   //setTodos we use to set the state variable
   const [todos, setTodos] = React.useState([
-    { text: "1"},
-    { text: "2"},
-    { text: "3"}
+    {
+      text: "1",
+      isCompleted: false
+    },
+    {
+      text: "2",
+      isCompleted: false  
+    },
+    { 
+      text: "3",
+      isCompleted: false  
+    }
   ]);
 
   const addToDo = text => {
@@ -47,14 +63,33 @@ function App() {
     setTodos(newToDos);
   };
 
+  const completeToDo = index => {
+    const newToDos = [...todos];
+    newToDos[index].isCompleted = true;
+    setTodos(newToDos);
+  };
+
+  const removeToDo = index => {
+    const newToDos = [...todos];
+    newToDos.splice(index, 1);
+    setTodos(newToDos);
+  };
+
   return (
     <div className="app">
+
+      <div className = "header">
+        The MEAN To Do List.
+      </div>
+
       <div className="todo-list">
         {todos.map((todo, index) => (
           <ToDo
             key={index}
             index={index}
             todo={todo}
+            completeToDo={completeToDo}
+            removeToDo={removeToDo}
           />
         ))}
         <ToDoForm addToDo={addToDo} />
