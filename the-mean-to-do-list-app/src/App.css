@@ -25,19 +25,29 @@ cddafd */
 
 .todo-list {
   margin: auto;
-  background: #fde2e4;
-  border-radius: 4px;
+  background-color: #fad2e1;
+  border-radius: 15px;
   max-width: 400px;
-  padding: 5px;
+  padding: 10px;
 }
 
 .todo {
   align-items: center;
-  background: #fad2e1;
-  border-radius: 3px;
+  background-color: #fde2e4;
+  border-radius: 10px;
   display: flex;
   font-size: 12px;
   justify-content: space-between;
-  margin-bottom: 6px;
-  padding: 3px 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.ToDoForm{
+  padding: 20px;
+}
+
+button{
+  padding: 5px;
+  border: none;
+  background: none;
 }

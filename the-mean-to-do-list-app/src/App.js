@@ -1,7 +1,7 @@
-
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import {pickRandPrefix} from './prefixes.js';
 
 function ToDo({ todo, index, completeToDo, removeToDo }) {
   return (
@@ -23,6 +23,7 @@ function ToDoForm({addToDo}){
   const handleSubmit = e => {
     e.preventDefault();
     if (!value) return;
+    // value += pickRandPrefix();
     addToDo(value);
     setValue("");
   };
