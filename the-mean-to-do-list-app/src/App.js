@@ -7,12 +7,18 @@ function ToDo({ todo, index, completeToDo, removeToDo }) {
   return (
     <div
       className="todo"
-      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
+      style={
+        { 
+          textDecoration: todo.isCompleted ? "line-through" : ""
+        }
+      }
     >
+      <div className = "action done" onClick={() => completeToDo(index)}>
+      <button className = "done" onClick={() => completeToDo(index)}>✔️</button>
+      </div>
       {todo.text}
-      <div className = "actions">
-        <button onClick={() => completeToDo(index)}>✅</button>
-        <button onClick={() => removeToDo(index)}>❌</button>
+      <div className = "action remove">
+        <button className = "remove" onClick={() => removeToDo(index)}>✖️</button>
       </div>
     </div>
   );
@@ -34,7 +40,7 @@ function ToDoForm({addToDo}){
         className="input"
         value={value}
         onChange={e => setValue(e.target.value)}
-      />
+      /> 
     </form>
   );
 };
@@ -42,46 +48,40 @@ function ToDoForm({addToDo}){
 function App() {
   //argument in useState is default
   //todos is the state variable
-  //setTodos we use to set the state variable
-  const [todos, setTodos] = React.useState([
-    {
-      text: "1",
-      isCompleted: false
-    },
-    {
-      text: "2",
-      isCompleted: false  
-    },
-    { 
-      text: "3",
-      isCompleted: false  
-    }
-  ]);
+  //setToDos we use to set the state variable
+  const [todos, setToDos] = React.useState([]);
 
   const addToDo = text => {
-    //copy old todos and add new to do, change state of old todos to new todos using setTodos
+    //copy old todos and add new to do, change state of old todos to new todos using setToDos
+    text = String( pickRandPrefix().concat(text) );
     const newToDos = [...todos, { text }];
-    setTodos(newToDos);
+    setToDos(newToDos);
   };
 
   const completeToDo = index => {
     const newToDos = [...todos];
     newToDos[index].isCompleted = true;
-    setTodos(newToDos);
+    setToDos(newToDos);
   };
 
   const removeToDo = index => {
     const newToDos = [...todos];
     newToDos.splice(index, 1);
-    setTodos(newToDos);
+    setToDos(newToDos);
   };
 
   return (
     <div className="app">
 
       <div className = "header">
-        The MEAN To Do List.
+        <div className = "title">
+          the mean to-do list ☺
+        </div>
+        <div className = "credits">
+          by torrance cui
+        </div>
       </div>
+      
 
       <div className="todo-list">
         {todos.map((todo, index) => (
