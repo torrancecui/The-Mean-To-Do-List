@@ -53,7 +53,7 @@ function App() {
 
   const addToDo = text => {
     //copy old todos and add new to do, change state of old todos to new todos using setToDos
-    text = String( pickRandPrefix().concat(text) );
+    text = String( pickRandPrefix().concat(text) ).toLowerCase();
     const newToDos = [...todos, { text }];
     setToDos(newToDos);
   };
