@@ -78,6 +78,10 @@ button{
   background: none;
 }
 
+.toggleButton{
+  padding: 20px;
+}
+
 .action{
   padding: 5px;
   opacity: 0.5; 

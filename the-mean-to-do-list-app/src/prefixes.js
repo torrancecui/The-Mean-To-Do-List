@@ -1,4 +1,4 @@
-const prefixes = [
+const meanPrefixes = [
     "please f*cking ",
     "honest to god, ",
     "for once in your life, ",
@@ -10,11 +10,22 @@ const prefixes = [
     "get off your ass and "
 ];
 
+const nicePrefixes = [
+    "would you kindly please ",
+    "you're doing so good sweetie, go  ",
+    "please remember to "
+];
+
 function getRandInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-export function pickRandPrefix(){
-    let num = getRandInt(prefixes.length);
-    return prefixes[num];
+export function pickRandPrefix(niceMode){
+    if (niceMode){
+        let num = getRandInt(nicePrefixes.length);
+        return nicePrefixes[num];
+    }else{
+        let num = getRandInt(meanPrefixes.length);
+        return meanPrefixes[num];
+    }
 }

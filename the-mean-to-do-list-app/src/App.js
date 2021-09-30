@@ -1,5 +1,5 @@
 import React from 'react';
-// import logo from './logo.svg';
+import { ToggleButton } from "./toggleButton";
 import './App.css';
 import {pickRandPrefix} from './prefixes.js';
 
@@ -50,10 +50,11 @@ function App() {
   //todos is the state variable
   //setToDos we use to set the state variable
   const [todos, setToDos] = React.useState([]);
+  const [selected, setSelected] = React.useState(false);
 
   const addToDo = text => {
     //copy old todos and add new to do, change state of old todos to new todos using setToDos
-    text = String( pickRandPrefix().concat(text) ).toLowerCase();
+    text = String( pickRandPrefix(selected).concat(text) ).toLowerCase();
     const newToDos = [...todos, { text }];
     setToDos(newToDos);
   };
@@ -94,6 +95,14 @@ function App() {
           />
         ))}
         <ToDoForm addToDo={addToDo} />
+      </div>
+      <div className = "toggleButton">
+        <ToggleButton
+          selected={selected}
+          toggleSelected={() => {
+          setSelected(!selected);
+          }}
+        />
       </div>
     </div>
   );
