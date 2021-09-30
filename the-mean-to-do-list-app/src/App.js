@@ -97,6 +97,9 @@ function App() {
         <ToDoForm addToDo={addToDo} />
       </div>
       <div className = "toggleButton">
+        <div className = "niceMode">
+            nice mode:
+        </div>
         <ToggleButton
           selected={selected}
           toggleSelected={() => {

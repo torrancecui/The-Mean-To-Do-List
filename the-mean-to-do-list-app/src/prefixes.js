@@ -13,7 +13,12 @@ const meanPrefixes = [
 const nicePrefixes = [
     "would you kindly please ",
     "you're doing so good sweetie, go  ",
-    "please remember to "
+    "pretty please remember to ",
+    "oh honey, don't forget to ",
+    "today is a great day to ",
+    "live, laugh, love, and ",
+    "jesus loves you, so ",
+    "your highness, it's about time to "
 ];
 
 function getRandInt(max) {
